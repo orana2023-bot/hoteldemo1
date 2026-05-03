@@ -5,16 +5,16 @@ import {
 } from 'lucide-react';
 
 const StatCard = ({ label, value, subtext, icon: Icon, color, trend }) => (
-  <div className="bg-white p-5 sm:p-7 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 flex flex-col justify-between h-auto sm:h-44 min-h-[120px] sm:min-h-0 group hover:shadow-md transition-all duration-500">
+  <div className="bg-white p-4 sm:p-5 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 flex flex-col justify-between h-auto sm:h-44 min-h-[110px] sm:min-h-0 group hover:shadow-md transition-all duration-500">
     <div className="flex justify-between items-start">
-      <div className={`p-2 sm:p-3 bg-[#F0F3E8] rounded-xl ${color} group-hover:scale-110 transition-transform`}><Icon size={18} className="sm:w-5 sm:h-5" strokeWidth={2} /></div>
-      {trend && (<div className="flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 bg-green-50 text-green-600 rounded-lg text-[11px] sm:text-xs font-bold tracking-wider"><ArrowUpRight size={12} /> {trend}</div>)}
+      <div className={`p-2 sm:p-2.5 bg-[#F0F3E8] rounded-xl ${color} group-hover:scale-110 transition-transform`}><Icon size={16} className="sm:w-5 sm:h-5" strokeWidth={2} /></div>
+      {trend && (<div className="flex items-center gap-1 px-2 py-0.5 bg-green-50 text-green-600 rounded-lg text-[10px] sm:text-xs font-bold tracking-wider"><ArrowUpRight size={10} className="sm:w-3 sm:h-3" /> {trend}</div>)}
     </div>
-    <div className="mt-4 sm:mt-0">
-      <p className="text-[11px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-0.5 sm:mb-1">{label}</p>
+    <div className="mt-3 sm:mt-0">
+      <p className="text-[10px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-0.5 sm:mb-1">{label}</p>
       <div className="flex items-baseline gap-1.5 sm:gap-2">
         <p className="text-xl sm:text-2xl font-bold text-[#1A2E05] tracking-tight">{value}</p>
-        <p className="text-[11px] sm:text-xs font-bold text-[#7A8A6A] uppercase tracking-widest">{subtext}</p>
+        <p className="text-[10px] sm:text-xs font-bold text-[#7A8A6A] uppercase tracking-widest">{subtext}</p>
       </div>
     </div>
   </div>
@@ -131,7 +131,7 @@ const Billing = () => {
         </div>
       </div>
       <div className="bg-white rounded-2xl border border-[#DDE5D0] shadow-sm overflow-hidden">
-        <div className="p-6 sm:p-8 border-b border-[#DDE5D0] flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="p-4 sm:p-8 border-b border-[#DDE5D0] flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
           <div className="relative group w-full sm:w-96">
             <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7A8A6A] group-focus-within:text-[#84A63C] transition-colors" />
             <input type="text" placeholder="Search Room or Guest..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-12 pr-4 py-3 bg-[#F0F3E8] border border-[#DDE5D0] rounded-xl text-sm font-medium focus:outline-none focus:bg-white focus:border-[#84A63C] focus:ring-2 focus:ring-[#84A63C]/10 transition-all" />
@@ -147,20 +147,40 @@ const Billing = () => {
               <p key={i} className={`text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider ${i === 5 ? 'text-right' : ''}`}>{h || 'Actions'}</p>
             ))}
           </div>
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {billingData.map((bill, idx) => (
-              <div key={idx} className="flex flex-col md:grid md:grid-cols-6 gap-4 md:gap-6 p-4 rounded-xl border border-[#DDE5D0] bg-white hover:border-[#84A63C]/30 hover:shadow-md transition-all items-center">
-                <div className="flex items-center gap-4 w-full md:w-auto">
-                  <div className="w-10 h-10 bg-[#F0F3E8] rounded-xl flex items-center justify-center shrink-0 border border-[#DDE5D0]"><span className="text-sm font-bold tracking-tight">{bill.room}</span></div>
-                  <div><p className="text-sm font-bold text-[#1A2E05] tracking-tight">{bill.guest}</p><p className="text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mt-0.5">Verified</p></div>
+              <div key={idx} className="flex flex-col md:grid md:grid-cols-6 gap-4 md:gap-6 p-4 sm:p-5 rounded-2xl border border-[#DDE5D0] bg-white hover:border-[#84A63C]/30 hover:shadow-md transition-all items-center">
+                <div className="flex items-center gap-4 w-full md:w-auto pb-4 md:pb-0 border-b md:border-b-0 border-[#F0F3E8]">
+                  <div className="w-10 h-10 bg-[#F0F3E8] rounded-xl flex items-center justify-center shrink-0 border border-[#DDE5D0] shadow-sm"><span className="text-sm font-bold tracking-tight text-[#1A2E05]">{bill.room}</span></div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-bold text-[#1A2E05] tracking-tight truncate">{bill.guest}</p>
+                    <p className="text-[10px] font-bold text-[#7A8A6A] uppercase tracking-wider mt-0.5">Verified</p>
+                  </div>
                 </div>
-                <div className="w-full md:w-auto"><p className="md:hidden text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-1">Check-out</p><p className="text-xs font-bold text-[#4A5E38]">{bill.date}</p></div>
-                <div className="w-full md:w-auto"><p className="md:hidden text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-1">Amount</p><p className="text-sm font-bold text-[#1A2E05]">{bill.amount}</p></div>
-                <div className="w-full md:w-auto"><p className="md:hidden text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-1">Method</p><p className="text-xs font-bold text-[#7A8A6A] uppercase tracking-wider">{bill.method}</p></div>
-                <div className="w-full md:w-auto"><p className="md:hidden text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-1">Status</p><span className={`px-2.5 py-1 rounded-lg text-xs font-bold uppercase tracking-wider ${bill.status === 'Paid' ? 'bg-green-50 text-green-600' : 'bg-orange-50 text-orange-600'}`}>{bill.status}</span></div>
-                <div className="w-full md:w-auto flex justify-end gap-2">
-                  <button onClick={() => { setSelectedBill(bill); setIsInvoiceOpen(true); }} className="p-2 text-[#7A8A6A] hover:text-[#1A2E05] bg-[#F0F3E8] hover:bg-white rounded-lg transition-all border border-transparent hover:border-[#DDE5D0] shadow-sm"><Search size={16} /></button>
-                  <button className="p-2 text-[#7A8A6A] hover:text-[#1A2E05] bg-[#F0F3E8] hover:bg-white rounded-lg transition-all border border-transparent hover:border-[#DDE5D0] shadow-sm"><Download size={16} /></button>
+                
+                {/* Mobile Grid for details */}
+                <div className="grid grid-cols-2 md:contents gap-4 w-full">
+                  <div className="space-y-1">
+                    <p className="md:hidden text-[10px] font-bold text-[#7A8A6A] uppercase tracking-widest">Check-out</p>
+                    <p className="text-xs font-bold text-[#4A5E38]">{bill.date}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="md:hidden text-[10px] font-bold text-[#7A8A6A] uppercase tracking-widest">Amount</p>
+                    <p className="text-sm font-bold text-[#1A2E05]">{bill.amount}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="md:hidden text-[10px] font-bold text-[#7A8A6A] uppercase tracking-widest">Method</p>
+                    <p className="text-[10px] font-bold text-[#7A8A6A] uppercase tracking-widest">{bill.method}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="md:hidden text-[10px] font-bold text-[#7A8A6A] uppercase tracking-widest">Status</p>
+                    <span className={`px-2 py-0.5 rounded-lg text-[10px] font-bold uppercase tracking-widest inline-block ${bill.status === 'Paid' ? 'bg-green-50 text-green-600' : 'bg-orange-50 text-orange-600'}`}>{bill.status}</span>
+                  </div>
+                </div>
+
+                <div className="w-full md:w-auto flex justify-end gap-2 pt-4 md:pt-0 border-t md:border-t-0 border-[#F0F3E8]">
+                  <button onClick={() => { setSelectedBill(bill); setIsInvoiceOpen(true); }} className="flex-1 md:flex-none p-2.5 text-[#7A8A6A] hover:text-[#1A2E05] bg-[#F0F3E8] hover:bg-white rounded-xl transition-all border border-transparent hover:border-[#DDE5D0] shadow-sm flex items-center justify-center"><Search size={16} /></button>
+                  <button className="flex-1 md:flex-none p-2.5 text-[#7A8A6A] hover:text-[#1A2E05] bg-[#F0F3E8] hover:bg-white rounded-xl transition-all border border-transparent hover:border-[#DDE5D0] shadow-sm flex items-center justify-center"><Download size={16} /></button>
                 </div>
               </div>
             ))}

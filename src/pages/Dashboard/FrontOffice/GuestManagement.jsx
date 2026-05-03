@@ -5,17 +5,17 @@ import {
 } from 'lucide-react';
 
 const StatCard = ({ label, value, subtext, icon: Icon, color, bgClass }) => (
-  <div className="bg-white p-5 sm:p-7 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 flex flex-col justify-between h-auto sm:h-40 min-h-[120px] sm:min-h-0 group hover:shadow-md transition-all duration-500">
+  <div className="bg-white p-4 sm:p-5 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 flex flex-col justify-between h-auto sm:h-40 min-h-[110px] sm:min-h-0 group hover:shadow-md transition-all duration-500">
     <div className="flex justify-between items-start">
-      <div className={`p-2 sm:p-3 ${bgClass} rounded-xl ${color} group-hover:scale-110 transition-transform`}>
-        <Icon size={18} className="sm:w-5 sm:h-5" strokeWidth={2} />
+      <div className={`p-2 sm:p-2.5 ${bgClass} rounded-xl ${color} group-hover:scale-110 transition-transform`}>
+        <Icon size={16} className="sm:w-5 sm:h-5" strokeWidth={2} />
       </div>
     </div>
-    <div className="mt-4 sm:mt-0">
-      <p className="text-[11px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-0.5 sm:mb-1">{label}</p>
+    <div className="mt-3 sm:mt-0">
+      <p className="text-[10px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-0.5 sm:mb-1">{label}</p>
       <div className="flex items-baseline gap-1.5 sm:gap-2">
         <p className="text-xl sm:text-2xl font-bold text-[#1A2E05] tracking-tight">{value}</p>
-        <p className="text-[11px] sm:text-xs font-medium text-[#7A8A6A] uppercase">{subtext}</p>
+        <p className="text-[10px] sm:text-xs font-medium text-[#7A8A6A] uppercase">{subtext}</p>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@ const AddGuestModal = ({ isOpen, onClose }) => {
           </div>
           <button onClick={onClose} className="p-2 hover:bg-[#F0F3E8] rounded-lg transition-all"><X size={20} className="text-[#7A8A6A]" /></button>
         </div>
-        <div className="flex-1 overflow-y-auto p-8 sm:p-12 space-y-12 no-scrollbar">
+        <div className="flex-1 overflow-y-auto p-6 sm:p-12 space-y-8 sm:space-y-12 no-scrollbar">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <Users size={18} className="text-[#5C7A1F]" />
@@ -126,13 +126,13 @@ const GuestManagement = () => {
 
   return (
     <div className="space-y-8 pb-12">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#1A2E05] tracking-tight">Guest Registry</h1>
-          <p className="text-xs font-medium text-[#7A8A6A] mt-0.5">Onboarding & Occupancy Control</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-[#1A2E05] tracking-tight">Guest Registry</h1>
+          <p className="text-[10px] sm:text-xs font-medium text-[#7A8A6A] mt-0.5">Onboarding & Occupancy Control</p>
         </div>
-        <button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 bg-[#84A63C] text-white rounded-xl text-sm font-semibold hover:opacity-90 shadow-md transition-all">
-          <UserPlus size={18} /> New Reservation
+        <button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 bg-[#84A63C] text-white rounded-xl text-xs sm:text-sm font-semibold hover:opacity-90 shadow-md transition-all">
+          <UserPlus size={16} className="sm:w-[18px] sm:h-[18px]" /> New Reservation
         </button>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -172,14 +172,14 @@ const GuestManagement = () => {
                     <span className={`px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider ${guest.payment === 'Paid' ? 'bg-[#F0F3E8] text-[#1A2E05]' : 'bg-orange-50 text-orange-600'}`}>{guest.payment}</span>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-6 border-t border-[#F0F3E8] pt-6 mt-2">
+                <div className="grid grid-cols-2 gap-4 border-t border-[#F0F3E8] pt-5 mt-2">
                   <div className="space-y-0.5">
-                    <p className="text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider">Check-in</p>
-                    <p className="text-sm font-bold text-[#1A2E05]">{guest.checkIn}</p>
+                    <p className="text-[10px] font-bold text-[#7A8A6A] uppercase tracking-widest">Check-in</p>
+                    <p className="text-xs sm:text-sm font-bold text-[#1A2E05]">{guest.checkIn}</p>
                   </div>
                   <div className="space-y-0.5 text-right">
-                    <p className="text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider">Check-out</p>
-                    <p className="text-sm font-bold text-[#1A2E05]">{guest.checkOut}</p>
+                    <p className="text-[10px] font-bold text-[#7A8A6A] uppercase tracking-widest">Check-out</p>
+                    <p className="text-xs sm:text-sm font-bold text-[#1A2E05]">{guest.checkOut}</p>
                   </div>
                 </div>
                 <div className="flex flex-wrap items-center gap-3 mt-8">

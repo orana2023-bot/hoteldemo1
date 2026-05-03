@@ -53,7 +53,7 @@ const AddRoomModal = ({ isOpen, onClose, onAdd }) => {
           <h3 className="text-xl font-bold text-[#1A2E05]">Add New Room</h3>
           <button onClick={onClose} className="p-2 hover:bg-[#F0F3E8] rounded-lg transition-all"><X size={20} className="text-[#7A8A6A]" /></button>
         </div>
-        <div className="p-8 space-y-6">
+        <div className="p-6 sm:p-10 space-y-6">
           <div className="space-y-2">
             <label className="text-xs font-extrabold text-[#7A8A6A] uppercase tracking-widest ml-1">Room Number</label>
             <input type="text" placeholder="e.g. 101" value={formData.id} onChange={(e) => setFormData({...formData, id: e.target.value})} className="w-full px-5 py-3 bg-[#F0F3E8] border border-[#DDE5D0] rounded-xl text-sm font-medium focus:outline-none focus:bg-white focus:border-[#84A63C] focus:ring-2 focus:ring-[#84A63C]/10 transition-all" />

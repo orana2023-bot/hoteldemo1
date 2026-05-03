@@ -5,12 +5,12 @@ import {
 } from 'lucide-react';
 
 const StatCard = ({ label, value, icon: Icon, color, bgClass }) => (
-  <div className="bg-white p-5 sm:p-7 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 flex flex-col gap-2 sm:gap-3 group hover:shadow-md transition-all duration-500">
+  <div className="bg-white p-4 sm:p-5 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 flex flex-col gap-2 sm:gap-3 group hover:shadow-md transition-all duration-500">
     <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center ${bgClass} ${color}`}>
-      <Icon size={18} className="sm:w-5 sm:h-5" strokeWidth={2} />
+      <Icon size={16} className="sm:w-5 sm:h-5" strokeWidth={2} />
     </div>
     <div>
-      <p className="text-[11px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider">{label}</p>
+      <p className="text-[10px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider">{label}</p>
       <p className="text-lg sm:text-2xl font-bold text-[#1A2E05] mt-0.5">{value}</p>
     </div>
   </div>
@@ -115,14 +115,14 @@ const Reservations = () => {
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#1A2E05] tracking-tight">Reservations</h1>
-          <p className="text-xs font-medium text-[#7A8A6A] mt-0.5">Inventory Locks & Pre-Check-ins</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-[#1A2E05] tracking-tight">Reservations</h1>
+          <p className="text-[10px] sm:text-xs font-medium text-[#7A8A6A] mt-0.5">Inventory Locks & Pre-Check-ins</p>
         </div>
         <div className="flex w-full sm:w-auto items-center gap-4">
-          <button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 bg-[#84A63C] text-white rounded-xl text-sm font-semibold hover:opacity-90 shadow-md transition-all active:scale-[0.98]">
-            <Plus size={18} /> New Pre-Reservation
+          <button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 bg-[#84A63C] text-white rounded-xl text-xs sm:text-sm font-semibold hover:opacity-90 shadow-md transition-all active:scale-[0.98]">
+            <Plus size={16} className="sm:w-[18px] sm:h-[18px]" /> Pre-Reservation
           </button>
         </div>
       </div>
@@ -155,28 +155,36 @@ const Reservations = () => {
             <div className="space-y-4">
               {filteredReservations.map((res, index) => (
                 <div key={index} className="flex flex-col md:grid md:grid-cols-6 gap-4 md:gap-6 p-4 rounded-xl border border-[#DDE5D0] hover:border-[#84A63C]/30 hover:shadow-md transition-all items-start md:items-center group bg-white">
-                  <div className="col-span-2 flex items-center gap-3 sm:gap-4 w-full">
+                  <div className="col-span-2 flex items-center gap-3 sm:gap-4 w-full pb-4 md:pb-0 border-b md:border-b-0 border-[#F0F3E8]">
                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#F0F3E8] border border-[#DDE5D0] flex items-center justify-center shrink-0">
                       <span className="text-xs sm:text-sm font-bold text-[#1A2E05]">{res.guest.charAt(0)}</span>
                     </div>
                     <div>
                       <p className="text-xs sm:text-sm font-bold text-[#1A2E05]">{res.guest}</p>
-                      <p className="text-[11px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mt-0.5">{res.id}</p>
+                      <p className="text-[10px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mt-0.5">{res.id}</p>
                     </div>
                   </div>
-                  <div className="w-full md:w-auto">
-                    <p className="md:hidden text-[11px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-1">Dates</p>
-                    <p className="text-xs sm:text-xs font-bold text-[#4A5E38]">{res.dates}</p>
+                  
+                  {/* Mobile Grid for details */}
+                  <div className="grid grid-cols-2 md:contents gap-4 w-full">
+                    <div className="space-y-1">
+                      <p className="md:hidden text-[10px] font-bold text-[#7A8A6A] uppercase tracking-widest">Dates</p>
+                      <p className="text-xs sm:text-xs font-bold text-[#4A5E38]">{res.dates}</p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="md:hidden text-[10px] font-bold text-[#7A8A6A] uppercase tracking-widest">Room Type</p>
+                      <p className="text-xs sm:text-xs font-bold text-[#4A5E38]">{res.type}</p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="md:hidden text-[10px] font-bold text-[#7A8A6A] uppercase tracking-widest">Status</p>
+                      <StatusBadge status={res.status} />
+                    </div>
+                    <div className="md:hidden flex justify-end">
+                       <button className="p-2 text-[#7A8A6A] hover:text-[#1A2E05] hover:bg-[#F0F3E8] rounded-lg transition-all"><MoreHorizontal size={16} /></button>
+                    </div>
                   </div>
-                  <div className="w-full md:w-auto">
-                    <p className="md:hidden text-[11px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-1">Room Type</p>
-                    <p className="text-xs sm:text-xs font-bold text-[#4A5E38]">{res.type}</p>
-                  </div>
-                  <div className="w-full md:w-auto">
-                    <p className="md:hidden text-[11px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-1">Status</p>
-                    <StatusBadge status={res.status} />
-                  </div>
-                  <div className="w-full md:w-auto flex justify-end md:justify-end mt-1 sm:mt-2 md:mt-0 pt-2 sm:pt-3 md:pt-0 border-t md:border-t-0 border-[#F0F3E8]">
+
+                  <div className="hidden md:flex w-full md:w-auto justify-end">
                     <button className="p-1.5 sm:p-2 text-[#7A8A6A] hover:text-[#1A2E05] hover:bg-[#F0F3E8] rounded-lg transition-all"><MoreHorizontal size={16} className="sm:w-[18px] sm:h-[18px]" /></button>
                   </div>
                 </div>
