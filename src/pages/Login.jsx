@@ -25,12 +25,11 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-[#1C2B12] via-[#2A3D1E] to-[#1C2B12] p-4 sm:p-8 relative overflow-hidden">
-      {/* Background Glow Effects */}
+    <div className="min-h-screen flex flex-col justify-center items-center bg-[#F5F7F0] p-4 sm:p-8 relative overflow-hidden">
+      {/* Background Glow Effects - Adjusted for Light Theme */}
       <div className="absolute inset-0">
-        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[60%] bg-[#84A63C]/20 rounded-full blur-[150px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[60%] bg-[#5C7A1F]/15 rounded-full blur-[150px]" />
-        <div className="absolute top-[40%] left-[50%] w-[30%] h-[30%] bg-[#9BBF42]/10 rounded-full blur-[120px]" />
+        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[60%] bg-[#84A63C]/10 rounded-full blur-[150px]" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[60%] bg-[#5C7A1F]/5 rounded-full blur-[150px]" />
       </div>
 
       <div className="w-full max-w-[420px] z-10 animate-fade-in-up">
@@ -131,7 +130,7 @@ const Login = () => {
       </div>
 
       {/* Footer */}
-      <div className="mt-10 text-white/30 text-[10px] font-semibold tracking-[0.3em] z-10 uppercase">
+      <div className="mt-10 text-[#7A8A6A]/40 text-[10px] font-semibold tracking-[0.3em] z-10 uppercase">
         © 2026 HotelSoft Solutions
       </div>
       

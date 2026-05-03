@@ -3,6 +3,9 @@ import {
   Users, Bed, CalendarCheck, TrendingUp, ArrowUpRight, ArrowDownRight,
   Clock, MoreHorizontal
 } from 'lucide-react'
+import { 
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer 
+} from 'recharts';
 
 const StatCard = ({ title, value, change, isPositive, icon: Icon }) => (
   <div className="bg-white p-5 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 hover:shadow-lg hover:shadow-[#84A63C]/15 transition-all duration-500 group">
@@ -108,25 +111,81 @@ const Overview = () => {
               <h3 className="text-[15px] font-bold text-[#1A2E05]">Analytic Insights</h3>
               <p className="text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mt-0.5">Revenue & Occupancy Metrics</p>
             </div>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#84A63C]"></div>
+                <span className="text-[10px] font-bold text-[#7A8A6A] uppercase tracking-wider">Revenue</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#DDE5D0]"></div>
+                <span className="text-[10px] font-bold text-[#7A8A6A] uppercase tracking-wider">Occupancy</span>
+              </div>
+            </div>
           </div>
           
-          <div className="flex-1 flex items-end gap-3 sm:gap-5 px-2 sm:px-4 mt-6">
-            {[
-              { id: 'MON', val: 35 }, { id: 'TUE', val: 60 }, { id: 'WED', val: 40 }, 
-              { id: 'THU', val: 75 }, { id: 'FRI', val: 90 }, { id: 'SAT', val: 50 }, { id: 'SUN', val: 70 }
-            ].map((bar, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center gap-3 group relative">
-                <div className="absolute -top-8 bg-[#1C2B12] text-white text-xs font-bold px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-xl">
-                  {bar.val}%
-                </div>
-                <div 
-                  className="w-full bg-gradient-to-t from-[#84A63C]/20 to-[#84A63C]/5 rounded-xl relative overflow-hidden transition-all duration-500 group-hover:from-[#84A63C] group-hover:to-[#9BBF42] group-hover:shadow-lg cursor-pointer border border-[#DDE5D0]/50 group-hover:border-transparent" 
-                  style={{ height: `${bar.val}%` }}
-                >
-                </div>
-                <span className="text-xs font-bold text-[#7A8A6A] group-hover:text-[#1A2E05] transition-colors uppercase">{bar.id}</span>
-              </div>
-            ))}
+          <div className="flex-1 w-full h-[300px] mt-2">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart
+                data={[
+                  { name: 'Mon', revenue: 4000, occupancy: 2400 },
+                  { name: 'Tue', revenue: 3000, occupancy: 1398 },
+                  { name: 'Wed', revenue: 2000, occupancy: 9800 },
+                  { name: 'Thu', revenue: 2780, occupancy: 3908 },
+                  { name: 'Fri', revenue: 1890, occupancy: 4800 },
+                  { name: 'Sat', revenue: 2390, occupancy: 3800 },
+                  { name: 'Sun', revenue: 3490, occupancy: 4300 },
+                ]}
+                margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+              >
+                <defs>
+                  <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#84A63C" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#84A63C" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0F3E8" />
+                <XAxis 
+                  dataKey="name" 
+                  axisLine={false} 
+                  tickLine={false} 
+                  tick={{ fill: '#7A8A6A', fontSize: 10, fontWeight: 600 }}
+                  dy={10}
+                />
+                <YAxis 
+                  axisLine={false} 
+                  tickLine={false} 
+                  tick={{ fill: '#7A8A6A', fontSize: 10, fontWeight: 600 }}
+                />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: '#1C2B12', 
+                    border: 'none', 
+                    borderRadius: '12px',
+                    color: '#fff',
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+                  }}
+                  itemStyle={{ color: '#fff' }}
+                  cursor={{ stroke: '#84A63C', strokeWidth: 2 }}
+                />
+                <Area 
+                  type="monotone" 
+                  dataKey="revenue" 
+                  stroke="#84A63C" 
+                  strokeWidth={3}
+                  fillOpacity={1} 
+                  fill="url(#colorRevenue)" 
+                />
+                <Area 
+                  type="monotone" 
+                  dataKey="occupancy" 
+                  stroke="#DDE5D0" 
+                  strokeWidth={2}
+                  fill="transparent" 
+                />
+              </AreaChart>
+            </ResponsiveContainer>
           </div>
         </div>
 

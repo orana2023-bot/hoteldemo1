@@ -19,39 +19,41 @@ const DashboardLayout = () => {
     <div className="min-h-screen bg-[#F5F7F0] font-sans text-[#1A2E05]">
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[60] lg:hidden"
           onClick={() => setSidebarOpen(false)}
         ></div>
       )}
 
       {/* Sidebar */}
-      <div className={`fixed inset-y-0 left-0 z-[70] transition-all duration-500 lg:translate-x-0 ${
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } ${isCollapsed ? 'w-[76px]' : 'w-[270px]'}`}>
-        <Sidebar 
-          isCollapsed={isCollapsed} 
-          setIsCollapsed={setIsCollapsed} 
+      <div className={`fixed inset-y-0 left-0 z-[70] transition-all duration-500 lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } ${isCollapsed ? 'w-[76px]' : 'w-[270px]'}`}>
+        <Sidebar
+          isCollapsed={isCollapsed}
+          setIsCollapsed={setIsCollapsed}
           onClose={() => setSidebarOpen(false)}
         />
       </div>
 
       {/* Main Content Area */}
-      <div className={`flex flex-col min-h-screen transition-all duration-500 ${
-        isCollapsed ? 'lg:ml-[76px]' : 'lg:ml-[270px]'
-      }`}>
-        <Header 
-          title={getTitle(location.pathname)} 
-          onMenuClick={() => setSidebarOpen(true)} 
+      <div className={`flex flex-col min-h-screen transition-all duration-500 ${isCollapsed ? 'lg:ml-[76px]' : 'lg:ml-[270px]'
+        }`}>
+        <Header
+          title={getTitle(location.pathname)}
+          onMenuClick={() => setSidebarOpen(true)}
         />
-        <main className="flex-1 p-5 md:p-8 lg:p-10">
+        <main
+          style={{ backgroundColor: "#f1f7e4ea" }}
+          className="flex-1 p-5 md:p-8 lg:p-10"
+        >
           <div className="max-w-[1400px] mx-auto">
             <Outlet />
           </div>
         </main>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
