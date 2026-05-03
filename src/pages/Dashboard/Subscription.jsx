@@ -96,13 +96,13 @@ const Subscription = () => {
 
   return (
     <div className="space-y-8 pb-12">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#1A2E05] tracking-tight">Subscriptions & Legal</h1>
-          <p className="text-xs font-medium text-[#7A8A6A] mt-0.5">Compliance & Service Registry</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-[#1A2E05] tracking-tight">Subscriptions & Legal</h1>
+          <p className="text-[10px] sm:text-xs font-medium text-[#7A8A6A] mt-0.5">Compliance & Service Registry</p>
         </div>
-        <button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 bg-[#84A63C] text-white rounded-xl text-sm font-semibold hover:opacity-90 shadow-md transition-all">
-          <Plus size={18} /> Add Registry
+        <button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 bg-[#84A63C] text-white rounded-xl text-xs sm:text-sm font-semibold hover:opacity-90 shadow-md transition-all">
+          <Plus size={16} className="sm:w-[18px] sm:h-[18px]" /> Add Registry
         </button>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -133,7 +133,7 @@ const Subscription = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <StatCard label="Active Service" value="12" subtext="Units" icon={Zap} color="text-[#1A2E05]" bgClass="bg-[#F0F3E8]" />
         <StatCard label="Compliance" value="94%" subtext="Verified" icon={ShieldCheck} color="text-green-500" bgClass="bg-green-50" />
         <StatCard label="Monthly Cost" value="₹62K" subtext="Est." icon={CreditCard} color="text-blue-500" bgClass="bg-blue-50" />

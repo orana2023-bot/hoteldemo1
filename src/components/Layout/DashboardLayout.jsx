@@ -43,7 +43,7 @@ const DashboardLayout = () => {
           onMenuClick={() => setSidebarOpen(true)}
         />
         <main
-          style={{ backgroundColor: "#f1f7e4ea" }}
+          style={{ backgroundColor: "rgba(211, 243, 214, 0.22)" }}
           className="flex-1 p-5 md:p-8 lg:p-10"
         >
           <div className="max-w-[1400px] mx-auto">

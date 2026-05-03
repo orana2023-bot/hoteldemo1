@@ -34,17 +34,17 @@ const Login = () => {
 
       <div className="w-full max-w-[420px] z-10 animate-fade-in-up">
         {/* Glass Card */}
-        <div className="bg-white/[0.97] backdrop-blur-xl border border-white/60 shadow-2xl shadow-black/20 rounded-3xl p-8 sm:p-12 transition-all duration-500">
+        <div className="bg-white/[0.97] backdrop-blur-xl border border-white/60 shadow-2xl shadow-black/20 rounded-3xl p-6 sm:p-10 transition-all duration-500">
           
           {/* Header */}
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#84A63C] to-[#5C7A1F] shadow-lg shadow-[#84A63C]/30 mb-6">
-              <Building className="w-8 h-8 text-white" strokeWidth={1.5} />
+          <div className="text-center mb-8 sm:mb-10">
+            <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-[#84A63C] to-[#5C7A1F] shadow-lg shadow-[#84A63C]/30 mb-4 sm:mb-6">
+              <Building className="w-7 h-7 sm:w-8 sm:h-8 text-white" strokeWidth={1.5} />
             </div>
-            <h1 className="text-2xl font-black text-[#1A2E05] tracking-tight mb-1">
+            <h1 className="text-xl sm:text-2xl font-black text-[#1A2E05] tracking-tight mb-1">
               HERITAGE
             </h1>
-            <p className="text-[#7A8A6A] font-semibold tracking-[0.2em] text-[10px] uppercase">
+            <p className="text-[#7A8A6A] font-semibold tracking-[0.2em] text-[9px] sm:text-[10px] uppercase">
               Management System
             </p>
           </div>

@@ -5,15 +5,15 @@ import {
 } from 'lucide-react';
 
 const StatCard = ({ label, value, subtext, icon: Icon, color, bgClass }) => (
-  <div className="bg-white p-5 sm:p-7 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 flex flex-col justify-between h-auto sm:h-40 min-h-[120px] sm:min-h-0 group hover:shadow-md transition-all duration-500">
+  <div className="bg-white p-4 sm:p-5 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 flex flex-col justify-between h-auto sm:h-40 min-h-[110px] sm:min-h-0 group hover:shadow-md transition-all duration-500">
     <div className="flex justify-between items-start">
-      <div className={`p-2 sm:p-3 ${bgClass} rounded-xl ${color} group-hover:scale-110 transition-transform`}><Icon size={18} className="sm:w-5 sm:h-5" strokeWidth={2} /></div>
+      <div className={`p-2 sm:p-2.5 ${bgClass} rounded-xl ${color} group-hover:scale-110 transition-transform`}><Icon size={16} className="sm:w-[18px] sm:h-[18px]" strokeWidth={2} /></div>
     </div>
-    <div className="mt-4 sm:mt-0">
-      <p className="text-[11px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-0.5 sm:mb-1">{label}</p>
+    <div className="mt-3 sm:mt-0">
+      <p className="text-[10px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-0.5 sm:mb-1">{label}</p>
       <div className="flex items-baseline gap-1.5 sm:gap-2">
         <p className="text-xl sm:text-2xl font-bold text-[#1A2E05] tracking-tight">{value}</p>
-        <p className="text-[11px] sm:text-xs font-bold text-[#7A8A6A] uppercase tracking-widest">{subtext}</p>
+        <p className="text-[10px] sm:text-xs font-bold text-[#7A8A6A] uppercase tracking-widest">{subtext}</p>
       </div>
     </div>
   </div>
@@ -35,14 +35,14 @@ const Inventory = () => {
 
   return (
     <div className="space-y-8 pb-12">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#1A2E05] tracking-tight">Inventory</h1>
-          <p className="text-xs font-medium text-[#7A8A6A] mt-0.5">Stock Registry & Consumption Tracking</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-[#1A2E05] tracking-tight">Inventory</h1>
+          <p className="text-[10px] sm:text-xs font-medium text-[#7A8A6A] mt-0.5">Stock Registry & Consumption Tracking</p>
         </div>
-        <div className="flex items-center gap-3 w-full sm:w-auto">
-          <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3.5 bg-white border border-[#DDE5D0] text-[#1A2E05] rounded-xl text-sm font-semibold hover:bg-[#F0F3E8] shadow-sm transition-all"><Filter size={18} /> Export</button>
-          <button className="flex-[2] sm:flex-none flex items-center justify-center gap-2 px-6 py-3.5 bg-[#84A63C] text-white rounded-xl text-sm font-semibold hover:opacity-90 shadow-md transition-all"><Plus size={18} /> Add New Item</button>
+        <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
+          <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3.5 bg-white border border-[#DDE5D0] text-[#1A2E05] rounded-xl text-xs sm:text-sm font-semibold hover:bg-[#F0F3E8] shadow-sm transition-all"><Filter size={16} className="sm:w-[18px] sm:h-[18px]" /> Export</button>
+          <button className="flex-[2] sm:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3.5 bg-[#84A63C] text-white rounded-xl text-xs sm:text-sm font-semibold hover:opacity-90 shadow-md transition-all"><Plus size={16} className="sm:w-[18px] sm:h-[18px]" /> New Item</button>
         </div>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -53,9 +53,9 @@ const Inventory = () => {
       </div>
       <div className="space-y-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-[#F0F3E8] rounded-xl w-full lg:w-auto border border-[#DDE5D0]">
+          <div className="flex flex-nowrap overflow-x-auto no-scrollbar items-center gap-1.5 p-1.5 bg-[#F0F3E8] rounded-xl w-full lg:w-auto border border-[#DDE5D0]">
             {categories.map(cat => (
-              <button key={cat} onClick={() => setActiveTab(cat)} className={`px-6 py-2.5 rounded-lg text-xs font-semibold transition-all ${activeTab === cat ? 'bg-white text-[#5C7A1F] shadow-sm' : 'text-[#7A8A6A] hover:text-[#4A5E38]'}`}>{cat}</button>
+              <button key={cat} onClick={() => setActiveTab(cat)} className={`whitespace-nowrap px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg text-[10px] sm:text-xs font-semibold transition-all ${activeTab === cat ? 'bg-white text-[#5C7A1F] shadow-sm' : 'text-[#7A8A6A] hover:text-[#4A5E38]'}`}>{cat}</button>
             ))}
           </div>
           <div className="relative group w-full lg:w-96">

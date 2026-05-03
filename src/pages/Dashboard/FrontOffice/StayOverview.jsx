@@ -5,12 +5,12 @@ import {
 } from 'lucide-react';
 
 const StatCard = ({ label, value, icon: Icon, color }) => (
-  <div className="bg-white p-5 sm:p-7 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 flex flex-col justify-between h-auto sm:h-40 min-h-[120px] sm:min-h-0 group hover:shadow-md transition-all duration-500">
+  <div className="bg-white p-4 sm:p-5 rounded-2xl border border-[#DDE5D0] shadow-md shadow-[#84A63C]/5 flex flex-col justify-between h-auto sm:h-40 min-h-[110px] sm:min-h-0 group hover:shadow-md transition-all duration-500">
     <div className="flex justify-between items-start">
-      <div className={`p-2 sm:p-3 bg-[#F0F3E8] rounded-xl ${color} transition-all duration-500 group-hover:scale-110`}><Icon size={18} className="sm:w-5 sm:h-5" strokeWidth={2} /></div>
+      <div className={`p-2 sm:p-2.5 bg-[#F0F3E8] rounded-xl ${color} transition-all duration-500 group-hover:scale-110`}><Icon size={16} className="sm:w-5 sm:h-5" strokeWidth={2} /></div>
     </div>
-    <div className="mt-4 sm:mt-0">
-      <p className="text-[11px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-0.5 sm:mb-1">{label}</p>
+    <div className="mt-3 sm:mt-0">
+      <p className="text-[10px] sm:text-xs font-semibold text-[#7A8A6A] uppercase tracking-wider mb-0.5 sm:mb-1">{label}</p>
       <p className="text-xl sm:text-2xl font-bold text-[#1A2E05] tracking-tight">{value}</p>
     </div>
   </div>
@@ -178,15 +178,15 @@ const StayOverview = () => {
 
   return (
     <div className="space-y-8 pb-12">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#1A2E05] tracking-tight">Stay Overview</h1>
-          <p className="text-xs font-medium text-[#7A8A6A] mt-0.5">Live Occupancy & Room Control</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-[#1A2E05] tracking-tight">Stay Overview</h1>
+          <p className="text-[10px] sm:text-xs font-medium text-[#7A8A6A] mt-0.5">Live Occupancy & Room Control</p>
         </div>
-        <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
-          <div className="flex bg-[#F0F3E8] p-1 rounded-xl border border-[#DDE5D0]">
+        <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto overflow-x-auto no-scrollbar pb-1 sm:pb-0">
+          <div className="flex bg-[#F0F3E8] p-1 rounded-xl border border-[#DDE5D0] min-w-max">
             {['All', '1', '2', '3'].map(floor => (
-              <button key={floor} onClick={() => setFloorFilter(floor)} className={`px-5 py-2 rounded-lg text-xs font-semibold transition-all ${floorFilter === floor ? 'bg-white text-[#5C7A1F] shadow-sm' : 'text-[#7A8A6A] hover:text-[#4A5E38]'}`}>{floor === 'All' ? 'All Floors' : `Floor ${floor}`}</button>
+              <button key={floor} onClick={() => setFloorFilter(floor)} className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs font-semibold transition-all ${floorFilter === floor ? 'bg-white text-[#5C7A1F] shadow-sm' : 'text-[#7A8A6A] hover:text-[#4A5E38]'}`}>{floor === 'All' ? 'All Floors' : `Floor ${floor}`}</button>
             ))}
           </div>
         </div>
